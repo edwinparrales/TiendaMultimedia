@@ -17,11 +17,16 @@ public class Vencdaudio extends javax.swing.JFrame {
 
     Vecproduc objvec;
     Cdaudio []vecd;
+    String []a;
     int i;
     DefaultTableModel modTb= new DefaultTableModel();
     public Vencdaudio() {
         initComponents();
-        
+        String []titulos ={"Nombre Interprete","Nombre Cancion","Cod","Nom Producto","Valor"}; 
+        modTb.setColumnIdentifiers(titulos);
+        tbBuscar.setModel(modTb);
+        objvec=new Vecproduc();
+        vecd=objvec.getCd();
     }
 
     /**
@@ -52,12 +57,13 @@ public class Vencdaudio extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         txtbuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbBuscar = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        Buscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +84,11 @@ public class Vencdaudio extends javax.swing.JFrame {
         LimpiarCampos.setText("Limpiar Campos");
 
         RegistrarPr.setText("Registrar");
+        RegistrarPr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarPrActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Cantidad:");
 
@@ -159,7 +170,7 @@ public class Vencdaudio extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "NombreCancion", "Cod" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbBuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -170,7 +181,7 @@ public class Vencdaudio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbBuscar);
 
         jButton1.setText("Agregar al Carrito");
 
@@ -191,6 +202,13 @@ public class Vencdaudio extends javax.swing.JFrame {
 
         jButton3.setText("Generar Ticket");
 
+        Buscar.setText("Buscar");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -203,11 +221,14 @@ public class Vencdaudio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
-                                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                                .addComponent(Buscar)
+                                .addGap(14, 14, 14))
                             .addComponent(jButton1)
                             .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
@@ -227,8 +248,9 @@ public class Vencdaudio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Buscar))
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
@@ -238,11 +260,27 @@ public class Vencdaudio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RegistrarPrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarPrActionPerformed
+      
+        objvec.ingCd(txtnomInterp.getText(), txtnombcancio.getText(), txtcod.getText(), txtnomProduc.getText(), 
+                Double.parseDouble(txtPrecio.getText()));
+         cant.setText(""+objvec.getC());
+        
+    }//GEN-LAST:event_RegistrarPrActionPerformed
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        // TODO add your handling code here:
+        vecd=objvec.getAux();
+        
+        
+        
+    }//GEN-LAST:event_BuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,6 +318,7 @@ public class Vencdaudio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar;
     private javax.swing.JButton LimpiarCampos;
     private javax.swing.JButton RegistrarPr;
     private javax.swing.JLabel cant;
@@ -297,8 +336,8 @@ public class Vencdaudio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable tbBuscar;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextField txtcod;
