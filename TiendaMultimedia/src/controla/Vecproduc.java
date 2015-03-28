@@ -5,13 +5,69 @@
  */
 package controla;
 
+import modelo.Cdaudio;
+
 /**
  *
  * @author UsuarioEp
  */
 public class Vecproduc {
-    Cdaudio CD[];
-    int 
+    Cdaudio cd[];
+    Cdaudio[]aux;
+    int c;
+
+    public Vecproduc() {
+        cd=new Cdaudio[10];
+        c=0;
+        aux=new Cdaudio[10];
+    }
+
+    public Cdaudio[] getCd() {
+        return cd;
+    }
+
+    public void setCd(Cdaudio[] cd) {
+        this.cd = cd;
+    }
+
+    public int getC() {
+        return c;
+    }
+
+    public void setC(int c) {
+        this.c = c;
+    }
+     //vector auxiliar
+
+    public Cdaudio[] getAux() {
+        return aux;
+    }
+
+    public void setAux(Cdaudio[] aux) {
+        this.aux = aux;
+    }
+    
+    
+   
+    
+    public void ingCd(String nomInter, String nomCancion, String cod, String nompro, double precio){
+        
+        cd[c]= new Cdaudio(nomInter, nomCancion, cod, nompro, precio);
+        c++;
+        setCd(cd);
+     }
+    
+    public void busNomb(String n){
+         aux= getCd();
+         for (int i = 0; i < aux.length; i++) {
+            if(cd[i]!=null && cd[i].getNomCancion().equalsIgnoreCase(n)){
+                
+                aux[i]=cd[i];
+                
+            }
+        }
+         setAux(aux);
+    }
     
     
 }
