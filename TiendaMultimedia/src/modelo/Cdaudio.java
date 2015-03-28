@@ -15,9 +15,13 @@ public class Cdaudio extends Producto {
     public Cdaudio() {
     }
 
-    public Cdaudio(String cod, String nompro, double precio) {
+    public Cdaudio(String nomInter, String nomCancion, String cod, String nompro, double precio) {
         super(cod, nompro, precio);
+        this.nomInter = nomInter;
+        this.nomCancion = nomCancion;
     }
+
+    
 
     public String getNomInter() {
         return nomInter;

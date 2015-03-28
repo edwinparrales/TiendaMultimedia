@@ -10,5 +10,8 @@ package controla;
  * @author UsuarioEp
  */
 public class Vecproduc {
+    Cdaudio CD[];
+    int 
+    
     
 }
