@@ -19,20 +19,27 @@ public class Vencdaudio extends javax.swing.JFrame {
     Vecproduc objvec;
     Cdaudio []vecd;
     String []a;
-    int i,y;
+    int i,y,cont;
+    double total;
     DefaultTableModel modTb= new DefaultTableModel();
     DefaultTableModel mod1 = new DefaultTableModel();
+    DefaultTableModel modCarrito = new DefaultTableModel();
+    DefaultTableModel m;
     public Vencdaudio() {
         initComponents();
         i=0;
         y=0;
-        String []titulos ={"Nombre Interprete","Nombre Cancion","Cod","Nom Producto","Valor"}; 
+        cont=1;
+        total=0;
+        String []titulos ={"Nombre Interprete","Nombre Cancion","Cod","Nom Producto","Valor"};
+        String []titulos2 ={"Nombre Interprete","Nombre Cancion","Cod","Nom Producto","Valor"};
         modTb.setColumnIdentifiers(titulos);
+        modCarrito.setColumnIdentifiers(titulos2);
         tbBuscar.setModel(modTb);
-        tbcarrito.setModel(modTb);
+        tbcarrito.setModel(modCarrito);
         objvec=new Vecproduc();
-     
-//        vecd=objvec.getCd();
+         
+
     }
 
     /**
@@ -76,7 +83,7 @@ public class Vencdaudio extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         cantCarrito = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        cantCarrito1 = new javax.swing.JLabel();
+        lbtotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("COLECCIONES DE AUDIO");
@@ -258,7 +265,7 @@ public class Vencdaudio extends javax.swing.JFrame {
 
         jLabel10.setText("Total:");
 
-        cantCarrito1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lbtotal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -298,7 +305,7 @@ public class Vencdaudio extends javax.swing.JFrame {
                                 .addGap(40, 40, 40)
                                 .addComponent(jLabel10)
                                 .addGap(18, 18, 18)
-                                .addComponent(cantCarrito1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -339,7 +346,7 @@ public class Vencdaudio extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addGap(9, 9, 9))
-                            .addComponent(cantCarrito1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -408,8 +415,25 @@ public class Vencdaudio extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Agregar elementos a la tabla de compra
         int fs = tbBuscar.getSelectedRow();
-   
+        String NomInpte,NomCan,Cod,NomPro,Valor;
         
+        if(fs>=0){
+            m=(DefaultTableModel)tbBuscar.getModel();
+            NomInpte=tbBuscar.getValueAt(fs, 0).toString();
+            NomCan=tbBuscar.getValueAt(fs, 1).toString();
+            Cod=tbBuscar.getValueAt(fs, 2).toString();
+            NomPro=tbBuscar.getValueAt(fs, 3).toString();
+            Valor=tbBuscar.getValueAt(fs, 4).toString();
+            total+=Double.parseDouble(Valor);
+            lbtotal.setText(""+total);
+            cantCarrito.setText(""+cont++);
+            m=(DefaultTableModel)tbcarrito.getModel();
+            String felem[]={NomInpte,NomCan,Cod,NomPro,Valor};
+            m.addRow(felem);
+                }else{
+            
+            JOptionPane.showMessageDialog(null," No seleccion item ");
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -455,7 +479,6 @@ public class Vencdaudio extends javax.swing.JFrame {
     private javax.swing.JButton RegistrarPr;
     private javax.swing.JLabel cant;
     private javax.swing.JLabel cantCarrito;
-    private javax.swing.JLabel cantCarrito1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -473,6 +496,7 @@ public class Vencdaudio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lbtotal;
     private javax.swing.JTable tbBuscar;
     private javax.swing.JTable tbcarrito;
     private javax.swing.JTable tbproduc;
