@@ -5,6 +5,7 @@
  */
 package controla;
 
+import javax.swing.JOptionPane;
 import modelo.Cdaudio;
 
 /**
@@ -12,14 +13,15 @@ import modelo.Cdaudio;
  * @author UsuarioEp
  */
 public class Vecproduc {
+
     Cdaudio cd[];
-    Cdaudio[]aux;
+    Cdaudio[] aux;
     int c;
 
     public Vecproduc() {
-        cd=new Cdaudio[10];
-        c=0;
-        aux=new Cdaudio[10];
+        cd = new Cdaudio[10];
+        c = 0;
+        aux = new Cdaudio[10];
     }
 
     public Cdaudio[] getCd() {
@@ -37,7 +39,7 @@ public class Vecproduc {
     public void setC(int c) {
         this.c = c;
     }
-     //vector auxiliar
+    //vector auxiliar
 
     public Cdaudio[] getAux() {
         return aux;
@@ -46,44 +48,41 @@ public class Vecproduc {
     public void setAux(Cdaudio[] aux) {
         this.aux = aux;
     }
-    
-    
-   
-    
-    public void ingCd(String nomInter, String nomCancion, String cod, String nompro, double precio){
-        
-        cd[c]= new Cdaudio(nomInter, nomCancion, cod, nompro, precio);
+
+    public void ingCd(String nomInter, String nomCancion, String cod, String nompro, double precio) {
+
+        cd[c] = new Cdaudio(nomInter, nomCancion, cod, nompro, precio);
         c++;
         setCd(cd);
-     }
-    
-    public void busNomb(String n){
-         aux= getCd();
-         for (int i = 0; i < aux.length; i++) {
-            if(cd[i]!=null && cd[i].getNomCancion().equalsIgnoreCase(n)){
-                
-                aux[i]=cd[i];
+    }
+
+    public void buscar(int tipo, String n) {
+      
+        if (tipo == 1) {
+            for (int i = 0; i < aux.length; i++) {
+                if (cd[i] != null && cd[i].getNomCancion().equalsIgnoreCase(n)) {
+                    aux[i] = cd[i];
+                    
+                }
+            }
                 setAux(aux);
-                
+            
+            
+        } else {
+            if (tipo == 2) {
+                for (int i = 0; i < aux.length; i++) {
+                    if (cd[i] != null && cd[i].getCod().equalsIgnoreCase(n)) {
+                        aux[i] = cd[i];
+                   
+
+                    }
+
+                }
+                  setAux(aux);
             }
+
         }
-         
+      
     }
-     public void busCod(String c){
-         aux= getCd();
-         for (int i = 0; i < aux.length; i++) {
-            if(cd[i]!=null && cd[i].getCod().equalsIgnoreCase(c)){
-                
-                aux[i]=cd[i];
-                
-            }
-        }
-         setAux(aux);
-    }
-     
-     
-     
-     
-    
-    
+
 }
