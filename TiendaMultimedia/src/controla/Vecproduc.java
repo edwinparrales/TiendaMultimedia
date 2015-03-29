@@ -63,11 +63,27 @@ public class Vecproduc {
             if(cd[i]!=null && cd[i].getNomCancion().equalsIgnoreCase(n)){
                 
                 aux[i]=cd[i];
+                setAux(aux);
+                
+            }
+        }
+         
+    }
+     public void busCod(String c){
+         aux= getCd();
+         for (int i = 0; i < aux.length; i++) {
+            if(cd[i]!=null && cd[i].getCod().equalsIgnoreCase(c)){
+                
+                aux[i]=cd[i];
                 
             }
         }
          setAux(aux);
     }
+     
+     
+     
+     
     
     
 }
