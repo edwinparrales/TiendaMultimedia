@@ -319,13 +319,18 @@ public class Vencdaudio extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarPrActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        // TODO add your handling code here:
-         vecd = objvec.getAux();
-        if (ComboBox1.getSelectedItem().equals("NombreCancion")) {
-
-            objvec.busNomb(txtbuscar.getText());
-
-            a = new String[5];
+          int tipo=0;
+          String nomabuscar=txtbuscar.getText();
+          if (ComboBox1.getSelectedItem().equals("NombreCancion")) {
+              tipo=1;
+              objvec.buscar(tipo, nomabuscar);
+          }else{
+              tipo=2;
+              objvec.buscar(tipo, nomabuscar);
+          }
+           vecd = new Cdaudio[objvec.getAux().length];
+           vecd = objvec.getAux();
+           a = new String[5];
             a[0] = vecd[i].getNomInter();
             a[1] = vecd[i].getNomCancion();
             a[2] = vecd[i].getCod();
@@ -333,25 +338,6 @@ public class Vencdaudio extends javax.swing.JFrame {
             a[4] = "" + vecd[i].getPrecio();
             modTb.addRow(a);
             i++;
-
-        } else if (ComboBox1.getSelectedItem().equals("Cod")) {
-
-            objvec.busCod(txtbuscar.getText());
-            a = new String[5];
-            a[0] = vecd[i].getNomInter();
-            a[1] = vecd[i].getNomCancion();
-            a[2] = vecd[i].getCod();
-            a[3] = vecd[i].getNompro();
-            a[4] = "" + vecd[i].getPrecio();
-            modTb.addRow(a);
-            i++;
-        } else {
-            JOptionPane.showMessageDialog(null, " El articulo no se encuentra en la BD");
-        }
-
-
-       
-        
         
         
     }//GEN-LAST:event_BuscarActionPerformed
