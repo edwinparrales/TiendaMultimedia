@@ -5,7 +5,6 @@
  */
 package controla;
 
-import javax.swing.JOptionPane;
 import modelo.Cdaudio;
 
 /**
@@ -51,30 +50,31 @@ public class Vecproduc {
 
     public void ingCd(String nomInter, String nomCancion, String cod, String nompro, double precio) {
 
-        cd[c] = new Cdaudio(nomInter, nomCancion, cod, nompro, precio);
+        this.cd[c] = new Cdaudio(nomInter, nomCancion, cod, nompro, precio);
         c++;
-        setCd(cd);
+//       
     }
 
     public void buscar(int tipo, String n) {
-      
+        
         if (tipo == 1) {
-            for (int i = 0; i < aux.length; i++) {
+            for (int i = 0; i < cd.length; i++) {
                 if (cd[i] != null && cd[i].getNomCancion().equalsIgnoreCase(n)) {
                     aux[i] = cd[i];
                     
                 }
             }
-                setAux(aux);
+              setAux(aux);
+              
             
             
         } else {
             if (tipo == 2) {
-                for (int i = 0; i < aux.length; i++) {
+                for (int i = 0; i < cd.length; i++) {
                     if (cd[i] != null && cd[i].getCod().equalsIgnoreCase(n)) {
                         aux[i] = cd[i];
-                   
-
+                          
+                         
                     }
 
                 }

@@ -33,6 +33,7 @@ public class Vencdaudio extends javax.swing.JFrame {
         y=0;
         cont=1;
         total=0;
+       
         data="";
         String []titulos ={"Nombre Interprete","Nombre Cancion","Cod","Nom Producto","Valor"};
         String []titulos2 ={"Nombre Interprete","Nombre Cancion","Cod","Nom Producto","Valor"};
@@ -357,13 +358,10 @@ public class Vencdaudio extends javax.swing.JFrame {
                         .addGap(153, 153, 153))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(elimElemenCarrito)
-                                .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(elimElemenCarrito)
                             .addComponent(cantCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(9, 9, 9))
+                            .addComponent(jLabel10)
                             .addComponent(lbtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -395,27 +393,25 @@ public class Vencdaudio extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarPrActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-          int tipo=0;
-          String nomabuscar=txtbuscar.getText();
-          if (ComboBox1.getSelectedItem().equals("NombreCancion")) {
-              tipo=1;
-              objvec.buscar(tipo, nomabuscar);
-          }else{
-              tipo=2;
-              objvec.buscar(tipo, nomabuscar);
-          }
-           vecd = new Cdaudio[objvec.getAux().length];
-           vecd = objvec.getAux();
-            a = new String[5];
-            a[0] = vecd[i].getNomInter();
-            a[1] = vecd[i].getNomCancion();
-            a[2] = vecd[i].getCod();
-            a[3] = vecd[i].getNompro();
-            a[4] = "" + vecd[i].getPrecio();
-            modTb.addRow(a);
-            i++;
-        
-        
+          
+        String nomabuscar = txtbuscar.getText();
+        if (ComboBox1.getSelectedItem().equals("NombreCancion")) {
+             objvec.buscar(1, nomabuscar);
+        } else {
+            objvec.buscar(2, nomabuscar);
+        }
+        vecd = new Cdaudio[objvec.getAux().length];
+        vecd = objvec.getAux();
+        a = new String[5];
+        a[0] = vecd[i].getNomInter();
+        a[1] = vecd[i].getNomCancion();
+        a[2] = vecd[i].getCod();
+        a[3] = vecd[i].getNompro();
+        a[4] = "" + vecd[i].getPrecio();
+        modTb.addRow(a);
+        i++;
+
+
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void LimpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarCamposActionPerformed
