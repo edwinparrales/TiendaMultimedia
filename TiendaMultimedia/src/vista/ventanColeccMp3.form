@@ -228,7 +228,7 @@
                   <Component id="lbtotal" alignment="0" max="32767" attributes="0"/>
                   <Component id="GenerarTicket" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -426,6 +426,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpiar tabla"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpTablaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>

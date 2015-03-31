@@ -33,7 +33,7 @@ public class ventanColeccMp3 extends javax.swing.JFrame {
         modbuscar=new DefaultTableModel();
         modCarrito=new  DefaultTableModel();
         lista = new DefaultListModel();
-        i=0;
+        i=5;
         g=0;
         total=0;
         cont=0;
@@ -175,6 +175,11 @@ public class ventanColeccMp3 extends javax.swing.JFrame {
         jLabel7.setText(" CARRITO DE COMPRAS ");
 
         btnLimpTabla.setText("Limpiar tabla");
+        btnLimpTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpTablaActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Cantidad:");
 
@@ -373,7 +378,7 @@ public class ventanColeccMp3 extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(lbtotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(GenerarTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtcodigo, txtnomColeccion, txtnomInterprete, txtnomProduc, txtnomcancion, txtvalor});
@@ -382,20 +387,20 @@ public class ventanColeccMp3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void elimElemenCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimElemenCarritoActionPerformed
-//        int fila;
-//        String totalAux;
-//        fila=this.tbcarrito.getSelectedRow();
-//        if(fila>=0){
-//            totalAux=tbcarrito.getValueAt(fila, 4).toString();
-//            total-=Double.parseDouble(totalAux);
-//            lbtotal.setText(""+total);
-//            modCarrito.removeRow(fila);
-//            cont= modCarrito.getRowCount();
-//            this.cantCarrito.setText(""+cont);
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(null," Por favor seleccione el Item que desea eliminar de la tabla ");
-//        }
+        int fila;
+        String totalAux;
+        fila=this.tablaCarrito.getSelectedRow();
+        if(fila>=0){
+            totalAux=tablaCarrito.getValueAt(fila, 4).toString();
+            total-=Double.parseDouble(totalAux);
+            lbtotal.setText(""+total);
+            modCarrito.removeRow(fila);
+            cont= modCarrito.getRowCount();
+            this.cantCarrito.setText(""+cont);
+        }
+        else{
+            JOptionPane.showMessageDialog(null," Por favor seleccione el Item que desea eliminar de la tabla ");
+        }
 
     }//GEN-LAST:event_elimElemenCarritoActionPerformed
 
@@ -495,6 +500,36 @@ public class ventanColeccMp3 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAgregarCarritoActionPerformed
 
+    private void btnLimpTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpTablaActionPerformed
+        
+        modbuscar.setColumnCount(5);
+        modbuscar.setRowCount(0);
+        
+                
+    }//GEN-LAST:event_btnLimpTablaActionPerformed
+       
+     int f=0,k=0; 
+     String data="";
+    public void reporte() {
+        for (int f = 0; f < modCarrito.getRowCount(); f++) {
+            for (int k = 0; k < modCarrito.getColumnCount(); k++) {
+                data += modCarrito.getValueAt(f, k).toString() + "                 ";
+            }
+            data+="\n";
+        }
+        JOptionPane.showMessageDialog(null, "Cod*NombreCancion*NomInterprete*NomProducto*Valor\n"
+                                          + ""+data+"\n Total a pagar$:"+lbtotal.getText()," *FACTURA*",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
