@@ -282,9 +282,9 @@ public class VentanaDatos extends javax.swing.JFrame {
                             .addComponent(btnGeneTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(31, 31, 31)
                 .addComponent(btnAgragarCarrito)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtcodi, txtnombre, txtprecio, txttamaño});
@@ -477,9 +477,10 @@ public class VentanaDatos extends javax.swing.JFrame {
             tablacarrito.setModel(modcarrito);
             total+=Double.parseDouble(pre);
             totalCarrito.setText(""+total);
-            can++;
+            can=modcarrito.getRowCount();
             cantCarrito.setText(""+can);
         } else {
+            JOptionPane.showMessageDialog(null," DEBE SELECCIONAR UN ITEM ","ALERTA",JOptionPane.WARNING_MESSAGE);
         }
         
         
