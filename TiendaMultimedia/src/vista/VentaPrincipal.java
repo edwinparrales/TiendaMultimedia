@@ -27,21 +27,123 @@ public class VentaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        menucdaudio = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        mnusoftware = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("TIENDA MULTIMEDIA");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folderFotos/tienda.jpg"))); // NOI18N
+
+        jMenu1.setText("Salir");
+
+        jMenuItem1.setText("SALIR");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Productos de Audio");
+
+        menucdaudio.setText("CD AUDIO");
+        menucdaudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menucdaudioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menucdaudio);
+
+        jMenuItem2.setText("CD MP3");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Productos Digitales");
+
+        jMenuItem3.setText("DATOS");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
+        mnusoftware.setText("SOFTWARE");
+        mnusoftware.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnusoftwareActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mnusoftware);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+            .addComponent(jLabel1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+        System.exit(0);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menucdaudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menucdaudioActionPerformed
+        
+        Vencdaudio ven1 = new Vencdaudio();
+        ven1.setVisible(true);
+        
+        
+    }//GEN-LAST:event_menucdaudioActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        
+        ventanColeccMp3 ven2 = new ventanColeccMp3();
+        ven2.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        
+        VentanaDatos ven3 = new VentanaDatos();
+        ven3.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void mnusoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnusoftwareActionPerformed
+        VentaCdsoft ven4 = new VentaCdsoft();
+        ven4.setVisible(true);
+                
+           
+    }//GEN-LAST:event_mnusoftwareActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +181,15 @@ public class VentaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem menucdaudio;
+    private javax.swing.JMenuItem mnusoftware;
     // End of variables declaration//GEN-END:variables
 }
