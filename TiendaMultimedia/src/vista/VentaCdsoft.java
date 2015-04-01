@@ -5,18 +5,39 @@
  */
 package vista;
 
+import controla.ArraySoftware;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author UsuarioEp
  */
 public class VentaCdsoft extends javax.swing.JFrame {
+    ArraySoftware objArrsof;
+    DefaultTableModel modBus = new DefaultTableModel();
+    DefaultTableModel modCarrito = new DefaultTableModel();
+    DefaultListModel list = new DefaultListModel();
+    int i,cont;
+    double total;
 
     /**
      * Creates new form VentaCdsoft
      */
     public VentaCdsoft() {
         initComponents();
-    }
+        objArrsof=new ArraySoftware();
+        i=5;
+        total=0;
+        cont=0;
+        String []title={"Codigo","NombreProducto","SistemaOpera","Licencia","Valor"};
+        modBus.setColumnIdentifiers(title);
+        modCarrito.setColumnIdentifiers(title);
+        tablaBuscar.setModel(modBus);
+        JListSoft.setModel(list);
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,33 +48,34 @@ public class VentaCdsoft extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnbuscar = new javax.swing.ButtonGroup();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtversion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtcod = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        JListSoft = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtnumlic = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        txtSO = new javax.swing.JTextField();
+        btnCargarStock = new javax.swing.JButton();
+        btnregistrar = new javax.swing.JButton();
         rdbtnBusCodigo = new javax.swing.JRadioButton();
         rdbtnBusNomCancion = new javax.swing.JRadioButton();
-        jTextField6 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        txtbuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cant = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        cantStock = new javax.swing.JLabel();
+        btnAddCarro = new javax.swing.JButton();
+        btnClearTable = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaBuscar = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaCarrito = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         cantCarrito = new javax.swing.JLabel();
@@ -61,54 +83,87 @@ public class VentaCdsoft extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         lbtotal = new javax.swing.JLabel();
         GenerarTicket = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        txtprecio = new javax.swing.JTextField();
+        btnCargarStock1 = new javax.swing.JButton();
+        txtNomProduc = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel4.setText("PRECIO:");
+        jLabel4.setText("VERSION:");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtversion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtversionActionPerformed(evt);
             }
         });
 
         jLabel6.setText("CODIGO:");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(JListSoft);
 
-        jLabel2.setText("NOMBRE CANCION :");
+        jLabel2.setText("NOMBRE:");
 
-        jLabel3.setText("NOMBRE COECCION: ");
+        jLabel3.setText("NOMBRE PRODUCTO : ");
 
-        jLabel5.setText("NOMBRE INTERPRETE :");
+        jLabel5.setText("SISTEMA OPERATIVO :");
 
-        jButton2.setText("Cargar Invenrario");
-
-        jButton1.setText("REGISTRAR");
-
-        rdbtnBusCodigo.setText("BuscarCodigo");
-
-        rdbtnBusNomCancion.setText("BuscarNomCancion");
-
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        btnCargarStock.setText("Cargar Invenrario");
+        btnCargarStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                btnCargarStockActionPerformed(evt);
             }
         });
 
-        jButton3.setText("BUSCAR");
+        btnregistrar.setText("REGISTRAR");
+        btnregistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregistrarActionPerformed(evt);
+            }
+        });
 
+        btnbuscar.add(rdbtnBusCodigo);
+        rdbtnBusCodigo.setText("BuscarCodigo");
+
+        btnbuscar.add(rdbtnBusNomCancion);
+        rdbtnBusNomCancion.setText("BuscarNomCancion");
+
+        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbuscarActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("COLECCIONES CD SOFTWARE");
 
         jLabel8.setText("Cantidad:");
 
-        cant.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cantStock.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton4.setText("Agregar al Carro");
+        btnAddCarro.setText("Agregar al Carro");
+        btnAddCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCarroActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Limpiar tabla");
+        btnClearTable.setText("Limpiar tabla");
+        btnClearTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearTableActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaBuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -119,9 +174,9 @@ public class VentaCdsoft extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tablaBuscar);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCarrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -132,7 +187,7 @@ public class VentaCdsoft extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(tablaCarrito);
 
         jLabel7.setText(" CARRITO DE COMPRAS ");
 
@@ -158,22 +213,81 @@ public class VentaCdsoft extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setText("PRECIO:");
+
+        txtprecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtprecioActionPerformed(evt);
+            }
+        });
+
+        btnCargarStock1.setText("Limpiar");
+        btnCargarStock1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarStock1ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("NUM LICENCIA:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtnumlic, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtcod, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNomProduc, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtversion)
+                                    .addComponent(txtSO)
+                                    .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
-                                .addComponent(jButton4))
+                                .addComponent(btnAddCarro))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(260, 260, 260)
                                 .addComponent(jLabel7))
+                            .addComponent(btnClearTable)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnregistrar)
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jLabel8)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(cantStock, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(rdbtnBusNomCancion))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(btnBuscar)
+                                        .addGap(308, 308, 308))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnCargarStock)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnCargarStock1)
+                                        .addGap(53, 53, 53))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
@@ -186,27 +300,12 @@ public class VentaCdsoft extends javax.swing.JFrame {
                                 .addComponent(lbtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(GenerarTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel8)
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cant, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(51, 51, 51)
-                                        .addComponent(jButton2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(95, 95, 95))
+                            .addComponent(jScrollPane3)
+                            .addComponent(jScrollPane2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(287, 287, 287)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,51 +317,81 @@ public class VentaCdsoft extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel6)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(rdbtnBusNomCancion)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(46, 46, 46)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addContainerGap(132, Short.MAX_VALUE)))
+                                .addComponent(jLabel3))))
+                    .addContainerGap(692, Short.MAX_VALUE)))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel11, jLabel12, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, txtNomProduc, txtSO, txtcod, txtnombre, txtnumlic, txtprecio, txtversion});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cant, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addComponent(jButton1)))
-                .addGap(22, 22, 22)
-                .addComponent(jButton3)
-                .addGap(22, 22, 22)
-                .addComponent(jButton6)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(btnregistrar))
+                                .addGap(53, 53, 53)
+                                .addComponent(btnClearTable)
+                                .addGap(32, 32, 32))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cantStock, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(rdbtnBusNomCancion)
+                                            .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(3, 3, 3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(btnCargarStock, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnCargarStock1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(72, 72, 72)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addComponent(btnAddCarro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtversion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jLabel12))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtcod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtnumlic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(26, 26, 26)
+                        .addComponent(txtNomProduc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(GenerarTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel9)
@@ -275,69 +404,161 @@ public class VentaCdsoft extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(52, 52, 52)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2)
+                                .addGap(90, 90, 90)))
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel6))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel5)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(20, 20, 20)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel4)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(61, 61, 61)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(rdbtnBusCodigo)
-                                .addComponent(rdbtnBusNomCancion)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addContainerGap(374, Short.MAX_VALUE)))
+                            .addGap(217, 217, 217)
+                            .addComponent(rdbtnBusCodigo)))
+                    .addContainerGap(394, Short.MAX_VALUE)))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel11, jLabel12, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, txtNomProduc, txtSO, txtcod, txtnombre, txtnumlic, txtprecio, txtversion});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtversionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtversionActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtbuscarActionPerformed
 
     private void elimElemenCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimElemenCarritoActionPerformed
         int fila;
-        String totalAux;
-        fila=this.tbcarrito.getSelectedRow();
+        DefaultTableModel m;
+       String totalAux;
+        fila=this.tablaCarrito.getSelectedRow();
         if(fila>=0){
-            totalAux=tbcarrito.getValueAt(fila, 4).toString();
+            m= (DefaultTableModel) tablaCarrito.getModel();
+            totalAux=tablaCarrito.getValueAt(fila, 4).toString();
             total-=Double.parseDouble(totalAux);
             lbtotal.setText(""+total);
-            modCarrito.removeRow(fila);
-            cont= modCarrito.getRowCount();
+            m.removeRow(fila);
+            tablaCarrito.setModel(m);
+            cont= tablaCarrito.getRowCount();
             this.cantCarrito.setText(""+cont);
-        }
-        else{
+        }else{
             JOptionPane.showMessageDialog(null," Por favor seleccione el Item que desea eliminar de la tabla ");
         }
     }//GEN-LAST:event_elimElemenCarritoActionPerformed
-
+    String ticket;
     private void GenerarTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarTicketActionPerformed
 
-        reporte();
+        for (int j = 0; j < modCarrito.getRowCount(); j++) {
+            for (int k = 0; k < modCarrito.getColumnCount(); k++) {
+                ticket += modCarrito.getValueAt(j, k).toString() + "                 ";
+            }
+            ticket += "\n";
+        }
+
+        JOptionPane.showMessageDialog(null," Cod*NombreProducot*SistemaOperativo*Licencia*Valor\n"
+                + "" + ticket + "\n Total a pagar$:" + lbtotal.getText(), " *FACTURA*", JOptionPane.INFORMATION_MESSAGE);
+        ticket = "";
+
+
     }//GEN-LAST:event_GenerarTicketActionPerformed
+
+    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtprecioActionPerformed
+
+    private void btnCargarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarStockActionPerformed
+
+        for (int i = 0; i < 10; i++) {
+            list.add(i, objArrsof.getAcsdSoft().get(i).getCod() + "   " + objArrsof.getAcsdSoft().get(i).getNompro());
+
+        }
+
+
+    }//GEN-LAST:event_btnCargarStockActionPerformed
+      
+    private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
+        
+        objArrsof.agregaSoft(txtnumlic.getText(),txtSO.getText(), txtversion.getText(),txtcod.getText(),txtNomProduc.getText(),Double.parseDouble(txtprecio.getText()));
+        list.add(i, objArrsof.getAcsdSoft().get(i).getCod()+" "+objArrsof.getAcsdSoft().get(i).getNompro());
+        i++;
+        cantStock.setText(""+objArrsof.getCont());
+    }//GEN-LAST:event_btnregistrarActionPerformed
+       String[]vecAux=new String[5];
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+        if (rdbtnBusCodigo.isSelected()) {
+            objArrsof.buscar(1, txtbuscar.getText());
+            for (int j = 0; j < objArrsof.getAux().size(); j++) {
+                vecAux[0] = objArrsof.getAux().get(j).getCod();
+                vecAux[1] = objArrsof.getAux().get(j).getNompro();
+                vecAux[2] = objArrsof.getAux().get(j).getSisOperat();
+                vecAux[3] = objArrsof.getAux().get(j).getLicencia();
+                vecAux[4] = "" + objArrsof.getAux().get(j).getPrecio();
+                modBus.addRow(vecAux);
+                tablaBuscar.setModel(modBus);
+
+            }
+
+        } else {
+            objArrsof.buscar(2, txtbuscar.getText());
+            for (int j = 0; j < objArrsof.getAux().size(); j++) {
+                vecAux[0] = objArrsof.getAux().get(j).getCod();
+                vecAux[1] = objArrsof.getAux().get(j).getNompro();
+                vecAux[2] = objArrsof.getAux().get(j).getSisOperat();
+                vecAux[3] = objArrsof.getAux().get(j).getLicencia();
+                vecAux[4] = "" + objArrsof.getAux().get(j).getPrecio();
+                modBus.addRow(vecAux);
+                tablaBuscar.setModel(modBus);
+            }
+
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnCargarStock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarStock1ActionPerformed
+        // TODO add your handling code here:
+
+        list = new DefaultListModel();
+        JListSoft.setModel(list);
+
+
+    }//GEN-LAST:event_btnCargarStock1ActionPerformed
+
+    private void btnClearTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearTableActionPerformed
+        
+        modBus.setColumnCount(5);
+        modBus.setRowCount(0);
+        tablaBuscar.setModel(modBus);
+        
+    }//GEN-LAST:event_btnClearTableActionPerformed
+
+    private void btnAddCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarroActionPerformed
+
+        int fs = tablaBuscar.getSelectedRow();
+        String Cod, NomPro, so, key, Valor;
+
+        if (fs >= 0) {
+            cont++;
+            cantCarrito.setText("" + cont);
+            Cod = tablaBuscar.getValueAt(fs, 0).toString();
+            NomPro = tablaBuscar.getValueAt(fs, 1).toString();
+            so = tablaBuscar.getValueAt(fs, 2).toString();
+            key = tablaBuscar.getValueAt(fs, 3).toString();
+            Valor = tablaBuscar.getValueAt(fs, 4).toString();
+            total += Double.parseDouble(Valor);
+            lbtotal.setText("" + total);
+            String felem[] = {Cod, NomPro, so, key, Valor};
+            modCarrito.addRow(felem);
+            tablaCarrito.setModel(modCarrito);
+        } else {
+
+            JOptionPane.showMessageDialog(null, " Por favor seleccione el Item que desea de la tabla ");
+        }
+
+
+    }//GEN-LAST:event_btnAddCarroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,16 +597,21 @@ public class VentaCdsoft extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GenerarTicket;
-    private javax.swing.JLabel cant;
+    private javax.swing.JList JListSoft;
+    private javax.swing.JButton btnAddCarro;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCargarStock;
+    private javax.swing.JButton btnCargarStock1;
+    private javax.swing.JButton btnClearTable;
+    private javax.swing.ButtonGroup btnbuscar;
+    private javax.swing.JButton btnregistrar;
     private javax.swing.JLabel cantCarrito;
+    private javax.swing.JLabel cantStock;
     private javax.swing.JButton elimElemenCarrito;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -394,20 +620,21 @@ public class VentaCdsoft extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel lbtotal;
     private javax.swing.JRadioButton rdbtnBusCodigo;
     private javax.swing.JRadioButton rdbtnBusNomCancion;
+    private javax.swing.JTable tablaBuscar;
+    private javax.swing.JTable tablaCarrito;
+    private javax.swing.JTextField txtNomProduc;
+    private javax.swing.JTextField txtSO;
+    private javax.swing.JTextField txtbuscar;
+    private javax.swing.JTextField txtcod;
+    private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txtnumlic;
+    private javax.swing.JTextField txtprecio;
+    private javax.swing.JTextField txtversion;
     // End of variables declaration//GEN-END:variables
 }

@@ -406,7 +406,7 @@ public class ventanColeccMp3 extends javax.swing.JFrame {
 
     private void GenerarTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarTicketActionPerformed
 
-        
+        reporte();
 
     }//GEN-LAST:event_GenerarTicketActionPerformed
 
@@ -511,14 +511,16 @@ public class ventanColeccMp3 extends javax.swing.JFrame {
      int f=0,k=0; 
      String data="";
     public void reporte() {
+
         for (int f = 0; f < modCarrito.getRowCount(); f++) {
             for (int k = 0; k < modCarrito.getColumnCount(); k++) {
                 data += modCarrito.getValueAt(f, k).toString() + "                 ";
             }
-            data+="\n";
+            data += "\n";
         }
         JOptionPane.showMessageDialog(null, "Cod*NombreCancion*NomInterprete*NomProducto*Valor\n"
-                                          + ""+data+"\n Total a pagar$:"+lbtotal.getText()," *FACTURA*",JOptionPane.INFORMATION_MESSAGE);
+                + "" + data + "\n Total a pagar$:" + lbtotal.getText(), " *FACTURA*", JOptionPane.INFORMATION_MESSAGE);
+        data = "";
     }
     
     
