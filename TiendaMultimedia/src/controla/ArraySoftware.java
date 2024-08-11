@@ -20,6 +20,7 @@ public class ArraySoftware {
 
     public ArraySoftware() {
         cont = 5;
+        acsdSoft.add(new CdSoftware("Licencia 1", "Win7x32", "v2.2.3","co-999", "Sistema Pos", 500000));
         acsdSoft.add(new CdSoftware("yyyy-ffff-ffff", "win xp", " v1", "1", "Office2013", 120000));
         acsdSoft.add(new CdSoftware("yyyy-ddddd-ffff", "win 7", "v1", "2", "Norton", 120000));
         acsdSoft.add(new CdSoftware("yyyy-ffff-ddddd", "win 8", "v1", "3", "Corel", 120000));
@@ -61,11 +62,11 @@ public class ArraySoftware {
     public void buscar(int tp, String s) {
 
         for (int i = 0; i < acsdSoft.size(); i++) {
-            if (tp == 1 && acsdSoft.get(i).getCod().equals(s)) {
+            if (tp == 1 && acsdSoft.get(i).getCodigo().equals(s)) {
                 aux.add(acsdSoft.get(i));
 
             } else {
-                if (tp == 2 && acsdSoft.get(i).getNompro().equalsIgnoreCase(s)) {
+                if (tp == 2 && acsdSoft.get(i).getNombreProducto().equalsIgnoreCase(s)) {
                     aux.add(acsdSoft.get(i));
                 }
 

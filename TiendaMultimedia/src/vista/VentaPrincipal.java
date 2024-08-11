@@ -41,8 +41,6 @@ public class VentaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TIENDA MULTIMEDIA");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/folderFotos/tienda.jpg"))); // NOI18N
-
         jMenu1.setText("Salir");
 
         jMenuItem1.setText("SALIR");
@@ -101,7 +99,7 @@ public class VentaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

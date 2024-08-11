@@ -472,7 +472,7 @@ public class VentaCdsoft extends javax.swing.JFrame {
     private void btnCargarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarStockActionPerformed
 
         for (int i = 0; i < 10; i++) {
-            list.add(i, objArrsof.getAcsdSoft().get(i).getCod() + "   " + objArrsof.getAcsdSoft().get(i).getNompro());
+            list.add(i, objArrsof.getAcsdSoft().get(i).getCodigo() + "   " + objArrsof.getAcsdSoft().get(i).getNombreProducto());
 
         }
 
@@ -482,7 +482,7 @@ public class VentaCdsoft extends javax.swing.JFrame {
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
         
         objArrsof.agregaSoft(txtnumlic.getText(),txtSO.getText(), txtversion.getText(),txtcod.getText(),txtNomProduc.getText(),Double.parseDouble(txtprecio.getText()));
-        list.add(i, objArrsof.getAcsdSoft().get(i).getCod()+" "+objArrsof.getAcsdSoft().get(i).getNompro());
+        list.add(i, objArrsof.getAcsdSoft().get(i).getCodigo()+" "+objArrsof.getAcsdSoft().get(i).getNombreProducto());
         i++;
         cantStock.setText(""+objArrsof.getCont());
     }//GEN-LAST:event_btnregistrarActionPerformed
@@ -492,11 +492,11 @@ public class VentaCdsoft extends javax.swing.JFrame {
         if (rdbtnBusCodigo.isSelected()) {
             objArrsof.buscar(1, txtbuscar.getText());
             for (int j = 0; j < objArrsof.getAux().size(); j++) {
-                vecAux[0] = objArrsof.getAux().get(j).getCod();
-                vecAux[1] = objArrsof.getAux().get(j).getNompro();
-                vecAux[2] = objArrsof.getAux().get(j).getSisOperat();
+                vecAux[0] = objArrsof.getAux().get(j).getCodigo();
+                vecAux[1] = objArrsof.getAux().get(j).getNombreProducto();
+                vecAux[2] = objArrsof.getAux().get(j).getSistemaOperativo();
                 vecAux[3] = objArrsof.getAux().get(j).getLicencia();
-                vecAux[4] = "" + objArrsof.getAux().get(j).getPrecio();
+                vecAux[4] = "" + objArrsof.getAux().get(j).getValor();
                 modBus.addRow(vecAux);
                 tablaBuscar.setModel(modBus);
 
@@ -505,11 +505,11 @@ public class VentaCdsoft extends javax.swing.JFrame {
         } else {
             objArrsof.buscar(2, txtbuscar.getText());
             for (int j = 0; j < objArrsof.getAux().size(); j++) {
-                vecAux[0] = objArrsof.getAux().get(j).getCod();
-                vecAux[1] = objArrsof.getAux().get(j).getNompro();
-                vecAux[2] = objArrsof.getAux().get(j).getSisOperat();
+                vecAux[0] = objArrsof.getAux().get(j).getCodigo();
+                vecAux[1] = objArrsof.getAux().get(j).getNombreProducto();
+                vecAux[2] = objArrsof.getAux().get(j).getSistemaOperativo();
                 vecAux[3] = objArrsof.getAux().get(j).getLicencia();
-                vecAux[4] = "" + objArrsof.getAux().get(j).getPrecio();
+                vecAux[4] = "" + objArrsof.getAux().get(j).getValor();
                 modBus.addRow(vecAux);
                 tablaBuscar.setModel(modBus);
             }

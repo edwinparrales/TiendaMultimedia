@@ -62,11 +62,11 @@ public class ArrayCdDatos {
     public void buscar(int tp, String s) {
             aux=new ArrayList<Cddatos>();
         for (int i = 0; i < vecdDatos.size(); i++) {
-            if (tp == 1 && vecdDatos.get(i).getCod().equals(s)) {
+            if (tp == 1 && vecdDatos.get(i).getCodigo().equals(s)) {
                 aux.add(vecdDatos.get(i));
 
             } else {
-                if (tp == 2 && vecdDatos.get(i).getNompro().equalsIgnoreCase(s)) {
+                if (tp == 2 && vecdDatos.get(i).getNombreProducto().equalsIgnoreCase(s)) {
                     aux.add(vecdDatos.get(i));
                 }
 

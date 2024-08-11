@@ -399,7 +399,7 @@ public class VentanaDatos extends javax.swing.JFrame {
     private void btncargarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncargarStockActionPerformed
         clearLista();
         for (int z = 0; z < objvec1.getVecdDatos().size(); z++) {
-            modlista.add(z, objvec1.getVecdDatos().get(z).getCod() + "" + objvec1.getVecdDatos().get(z).getNompro());
+            modlista.add(z, objvec1.getVecdDatos().get(z).getCodigo()+ "" + objvec1.getVecdDatos().get(z).getNombreProducto());
             lista1.setModel(modlista);
 
         }
@@ -414,7 +414,7 @@ public class VentanaDatos extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
        
         objvec1.agreCddatos(Float.parseFloat(txttamaño.getText()), txtcodi.getText(), txtnombre.getText(), Double.parseDouble(txtprecio.getText()));
-        modlista.add(i, objvec1.getVecdDatos().get(i).getCod() + "" + objvec1.getVecdDatos().get(i).getNompro());
+        modlista.add(i, objvec1.getVecdDatos().get(i).getCodigo()+ "" + objvec1.getVecdDatos().get(i).getNombreProducto());
         i++;
         cantStock.setText("" + objvec1.getCont());
     }//GEN-LAST:event_btnRegistrarActionPerformed
@@ -425,9 +425,9 @@ public class VentanaDatos extends javax.swing.JFrame {
         if (rdbtnBusCodigo1.isSelected()) {
             objvec1.buscar(1, txtbuscar.getText());
             for (int j = 0; j < objvec1.getAux().size(); j++) {
-                vecAux[0] = objvec1.getAux().get(j).getCod();
-                vecAux[1] = "" + objvec1.getAux().get(j).getTamaño();
-                vecAux[2] = objvec1.getAux().get(j).getNompro();
+                vecAux[0] = objvec1.getAux().get(j).getCodigo();
+                vecAux[1] = "" + objvec1.getAux().get(j).getSize();
+                vecAux[2] = objvec1.getAux().get(j).getNombreProducto();
                 vecAux[3] = "" + objvec1.getAux().get(j).getPrecio();
 
                 modBuscar.addRow(vecAux);
@@ -439,9 +439,9 @@ public class VentanaDatos extends javax.swing.JFrame {
 
             objvec1.buscar(2, txtbuscar.getText());
             for (int j = 0; j < objvec1.getAux().size(); j++) {
-                vecAux[0] = objvec1.getAux().get(j).getCod();
-                vecAux[1] = objvec1.getAux().get(j).getNompro();
-                vecAux[2] = "" + objvec1.getAux().get(j).getTamaño();
+                vecAux[0] = objvec1.getAux().get(j).getCodigo();
+                vecAux[1] = objvec1.getAux().get(j).getNombreProducto();
+                vecAux[2] = "" + objvec1.getAux().get(j).getSize();
                 vecAux[3] = "" + objvec1.getAux().get(j).getPrecio();
 
                 modBuscar.addRow(vecAux);
